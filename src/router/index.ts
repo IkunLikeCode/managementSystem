@@ -1,0 +1,24 @@
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    name: "Home",
+    component: () => import("@/views/center/index.vue"),
+    meta: {},
+    children: [],
+  },
+];
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+router.beforeEach(async (_to, _from, next) => {
+  NProgress.start();
+  next();
+});
+router.afterEach((_to) => {
+  NProgress.done();
+});
+export default router;
