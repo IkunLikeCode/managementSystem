@@ -6,6 +6,6 @@
 
 <style lang="less">
 #app {
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
 </style>

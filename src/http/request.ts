@@ -81,7 +81,7 @@ export const requestInstace = <T = any>(
             type: "success",
             duration: 3000,
           });
-          resolve(data.data as T);
+          resolve(data as T);
         }
       });
   });
