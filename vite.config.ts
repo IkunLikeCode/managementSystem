@@ -17,7 +17,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
 
   // 从环境变量中获取API地址，也可以直接硬编码在这里
-  const apiTarget = env.VITE_API_BASE_URL || "http://localhost:8080";
+  // const apiTarget = env.VITE_API_BASE_URL || "http://localhost:8080";
 
   return {
     root,
@@ -67,9 +67,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 修正：添加有效的API代理目标
       proxy: {
         "/api": {
-          target: apiTarget,
+          target: "http://localhost:5174",
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+        "/mock/api": {
+          target: "http://localhost:5174",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/mock\/api/, ""),
         },
       },
     },

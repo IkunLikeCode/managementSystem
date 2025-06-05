@@ -29,9 +29,20 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+const noLogin = ["/login"];
 router.beforeEach(async (_to, _from, next) => {
   NProgress.start();
-  next();
+  const token = sessionStorage.getItem("userInfo");
+  const isLogin = token ? true : false;
+  if (isLogin || noLogin.includes(_to.path)) {
+    if (_to.path === "/login" && isLogin) {
+      next("/center");
+    } else {
+      next();
+    }
+  } else {
+    next("/login");
+  }
 });
 router.afterEach((_to) => {
   NProgress.done();

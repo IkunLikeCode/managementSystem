@@ -68,7 +68,7 @@ export const requestInstace = <T = any>(
       .request<any, AxiosResponse<BaseResponse>>({ ...config })
       .then((res: AxiosResponse<BaseResponse>) => {
         const data = res.data;
-        if (data.code !== 1) {
+        if (data.code !== 0) {
           ElMessage({
             message: data.message || "请求失败",
             type: "error",
