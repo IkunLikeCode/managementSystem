@@ -15,7 +15,9 @@ const handerLogin = () => {
 
 <template>
   <div class="header">
-    <div class="log">Log区域</div>
+    <div class="log">
+      <img src="@/assets/鸟.png" alt="" />
+    </div>
     <div class="user">
       <div class="userInfo">
         <el-icon :size="20">
@@ -46,6 +48,11 @@ const handerLogin = () => {
   justify-content: space-between;
   padding: 0 20px;
   box-sizing: border-box;
+  .log {
+    display: flex;
+    align-items: center;
+    width: 200px;
+  }
   .user {
     display: flex;
     align-items: center;

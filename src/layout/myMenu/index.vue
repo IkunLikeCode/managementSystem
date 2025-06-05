@@ -1,12 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter, useRoute } from "vue-router";
+const router = useRouter();
+const route = useRoute();
+const routers = router.getRoutes().filter((item) => {
+  if (item.meta && item.meta.isShow) {
+    return true;
+  }
+});
+</script>
 
 <template>
   <div class="my-menu">
-    <el-menu>
-      <el-menu-item index="1">Menu Item 1</el-menu-item>
-      <el-menu-item index="2">Menu Item 2</el-menu-item>
-      <el-menu-item index="3">Menu Item 3</el-menu-item>
-      <el-menu-item index="4">Menu Item 4</el-menu-item>
+    <el-menu router :default-active="route.path">
+      <el-menu-item
+        v-for="item in routers"
+        :key="item.path"
+        :index="item.path"
+        >{{ item.meta?.title }}</el-menu-item
+      >
     </el-menu>
   </div>
 </template>

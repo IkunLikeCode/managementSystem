@@ -11,7 +11,7 @@ import myMenu from "./myMenu/index.vue";
         <el-aside width="200px">
           <myMenu></myMenu>
         </el-aside>
-        <el-main>
+        <el-main class="main-content">
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -26,8 +26,9 @@ import myMenu from "./myMenu/index.vue";
   .el-header {
     padding: 0;
   }
-  .el-container {
-    height: 100%;
-  }
+}
+.el-container {
+  height: 100vh;
+  width: 100%;
 }
 </style>
